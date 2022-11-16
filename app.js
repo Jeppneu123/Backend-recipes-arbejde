@@ -22,8 +22,8 @@ app.use(
     })
 );
 
-app.get('/opskrifter', (req, res) => {
-    const query = "SELECT * FROM Opskrifter.retter_table;";
+app.get('/dishes', (req, res) => {
+    const query = "SELECT * FROM Recipe.dishes_table;";
     mysqlConnection.query(
         query,
         (err, results, fields) => {
@@ -35,6 +35,53 @@ app.get('/opskrifter', (req, res) => {
         }
     );
 })
+
+app.get('/dishes/:id', (req, res) => {
+    const query = "SELECT * FROM Recipe.dishes_table where dish_id = ?;";
+    const dish_id = req.params.id;
+    mysqlConnection.query(
+        query,
+        [dish_id],
+        (err, results, fields) => {
+            if (!err) {
+                res.json(results);
+            } else {
+                console.log(err);
+            }
+        }
+    );
+})
+
+app.get('/ingredients', (req, res) => {
+    const query = "SELECT * FROM Recipe.ingredients;";
+    mysqlConnection.query(
+        query,
+        (err, results, fields) => {
+            if (!err) {
+                res.json(results);
+            } else {
+                console.log(err);
+            }
+        }
+    );
+})
+app.get('/ingredients/:id', (req, res) => {
+    const query = "SELECT * FROM Recipe.ingredients where ingredients_id = ?;";
+    const ingredients_id = req.params.id;
+    mysqlConnection.query(
+        query,
+        [ingredients_id],
+        (err, results, fields) => {
+            if (!err) {
+                res.json(results);
+            } else {
+                console.log(err);
+            }
+        }
+    );
+})
+
+
 
 app.get("/", (req, res) => {
     res.send("Hello World!");
