@@ -81,10 +81,10 @@ app.get('/ingredients/:id', (req, res) => {
     );
 })
 
-
-
 app.get("/", (req, res) => {
-    res.send("Hello World!");
+    res.send("Hello World!" +
+        "Useable endpoints are: " +
+        "Dishes, Dishes:id or ingredients, ingredients:id");
 });
 
 app.listen(port, () => {
