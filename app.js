@@ -92,9 +92,9 @@ app.listen(port, () => {
 });
 
 app.post("/user/create", (req, res) => {
-    const username = req.body.username;
-    const email = req.body.email;
-    const password = req.body.password;
+    let username = req.body.username;
+    let email = req.body.email;
+    let password = req.body.password;
     console.log(username);
     console.log(email);
     console.log(password);
