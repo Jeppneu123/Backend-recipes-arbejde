@@ -92,8 +92,12 @@ app.listen(port, () => {
 });
 
 app.post("/user/create", (req, res) => {
-    const name = req.body.name;
-    console.log(name);
+    const username = req.body.username;
+    const email = req.body.email;
+    const password = req.body.password;
+    console.log(username);
+    console.log(email);
+    console.log(password);
     res.sendStatus(200);
-
 });
+
