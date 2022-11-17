@@ -91,10 +91,9 @@ app.listen(port, () => {
     console.log(`Node.js REST API listening at http://localhost:${port}`);
 });
 
-app.post("/users/", (req, res) => {
-    let newUser = req.body;
-    const timestamp = Date.now(); // dummy generated user id
-    newUser.id = timestamp;
-    users.push(newUser);
-    return res.json(users);
+app.post("/user/create", (req, res) => {
+    const name = req.body.name;
+    console.log(name);
+    res.sendStatus(200);
+
 });
