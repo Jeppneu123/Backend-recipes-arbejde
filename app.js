@@ -98,10 +98,8 @@ app.post("/user/create", (req, res) => {
     console.log(username);
     console.log(email);
     console.log(password);
-    res.sendStatus(200);
 
-    const query = `INSERT INTO user('user_name','user_email','user_password') +
-    VALUES ('${username}','${email}','${password}')`
+    const query = `INSERT INTO user(user_name,user_email,user_password) VALUES ('${username}','${email}','${password}')`
     mysqlConnection.query(
         query,
         (err, results, fields) => {
