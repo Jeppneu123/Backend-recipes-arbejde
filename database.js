@@ -10,7 +10,7 @@ const mysqlConnection = mysql.createConnection({
     password: process.env.PASSWORD,
     multipleStatements: true,
     ssl: {
-        "rejectUnauthorized": this.host === "localhost"
+        rejectUnauthorized: this.host === "localhost"
     }
 });
 
