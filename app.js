@@ -3,7 +3,7 @@ const cors = require("cors");
 const app = express();
 require('dotenv');
 const mysqlConnection = require("./database");
-const port = 3000;
+const port = process.env.PORT || 3030;
 
 
 // Your github page origin has to be written EXACTLY like this! https://behu-kea.github.io
@@ -99,7 +99,6 @@ app.post("/user/create", (req, res) => {
     console.log(email);
     console.log(password);
     const query = "INSERT INTO user(user_name,user_email,user_password) VALUES (?,?,?)";
-
     mysqlConnection.query(
         query,
         [username, email, password],
