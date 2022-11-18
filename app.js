@@ -23,7 +23,7 @@ app.use(
 );
 
 app.get('/dishes', (req, res) => {
-    const query = "SELECT * FROM Recipe.dishes_table;";
+    const query = "SELECT * FROM recipe.dishes_table;";
     mysqlConnection.query(
         query,
         (err, results, fields) => {
@@ -37,7 +37,7 @@ app.get('/dishes', (req, res) => {
 })
 
 app.get('/dishes/:id', (req, res) => {
-    const query = "SELECT * FROM Recipe.dishes_table where dish_id = ?;";
+    const query = "SELECT * FROM recipe.dishes_table where dish_id = ?;";
     const dish_id = req.params.id;
     mysqlConnection.query(
         query,
@@ -53,7 +53,7 @@ app.get('/dishes/:id', (req, res) => {
 })
 
 app.get('/ingredients', (req, res) => {
-    const query = "SELECT * FROM Recipe.ingredients;";
+    const query = "SELECT * FROM recipe.ingredients;";
     mysqlConnection.query(
         query,
         (err, results, fields) => {
@@ -66,7 +66,7 @@ app.get('/ingredients', (req, res) => {
     );
 })
 app.get('/ingredients/:id', (req, res) => {
-    const query = "SELECT * FROM Recipe.ingredients where ingredients_id = ?;";
+    const query = "SELECT * FROM recipe.ingredients where ingredients_id = ?;";
     const ingredients_id = req.params.id;
     mysqlConnection.query(
         query,
