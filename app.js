@@ -3,7 +3,7 @@ const cors = require("cors");
 const app = express();
 require('dotenv');
 const mysqlConnection = require("./database");
-const port = process.env.PORT || 3030;
+const port = 3000//process.env.PORT || 3030;
 
 
 // Your github page origin has to be written EXACTLY like this! https://behu-kea.github.io
@@ -65,8 +65,39 @@ app.get('/ingredients', (req, res) => {
         }
     );
 })
+
 app.get('/ingredients/:id', (req, res) => {
     const query = "SELECT * FROM recipe.ingredients where ingredients_id = ?;";
+    const ingredients_id = req.params.id;
+    mysqlConnection.query(
+        query,
+        [ingredients_id],
+        (err, results, fields) => {
+            if (!err) {
+                res.json(results);
+            } else {
+                console.log(err);
+            }
+        }
+    );
+})
+
+app.get('/procedure/', (req, res) => {
+    const query = "SELECT * FROM recipe.procedure;";
+    mysqlConnection.query(
+        query,
+        (err, results, fields) => {
+            if (!err) {
+                res.json(results);
+            } else {
+                console.log(err);
+            }
+        }
+    );
+})
+
+app.get('/procedure/:id', (req, res) => {
+    const query = "SELECT * FROM recipe.procedure where procedure_dish_id = ?;";
     const ingredients_id = req.params.id;
     mysqlConnection.query(
         query,
