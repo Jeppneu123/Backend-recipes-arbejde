@@ -67,7 +67,7 @@ app.get('/ingredients', (req, res) => {
 })
 
 app.get('/ingredients/:id', (req, res) => {
-    const query = "SELECT * FROM recipe.ingredients where ingredients_id = ?;";
+    const query = "SELECT * FROM ingredients INNER JOIN recipe.procedure ON ingredients.ingredients_procedure_id = recipe.procedure.procedure_id WHERE ingredients_dish_id = ?;";
     const ingredients_id = req.params.id;
     mysqlConnection.query(
         query,
