@@ -3,11 +3,11 @@ const cors = require("cors");
 const app = express();
 require('dotenv');
 const mysqlConnection = require("./database");
-const port = 3000//process.env.PORT || 3030;
+const port = process.env.PORT || 3030;
 
 
 // Your github page origin has to be written EXACTLY like this! https://behu-kea.github.io
-const URL_FOR_FRONTEND = "YOUR_GITHUB_PAGE_ORIGIN_HERE";
+const URL_FOR_FRONTEND = "https://Jeppeneu123.github.io";
 
 app.use(express.json()); //Used to parse JSON bodies
 app.use(express.urlencoded({ extended: true })); //Parse URL-encoded bodies
