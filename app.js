@@ -3,7 +3,7 @@ const cors = require("cors");
 const app = express();
 require('dotenv');
 const mysqlConnection = require("./database");
-const port = process.env.PORT || 3030;
+const port = process.env.PORT || 3000;
 
 
 // Your github page origin has to be written EXACTLY like this! https://behu-kea.github.io
@@ -143,3 +143,8 @@ app.post("/user/create", (req, res) => {
     );
 });
 
+// EXAM API express
+app.get("/eksamen", (req, res) => {
+    const numbers = [1,2,3,4,5]
+    res.json(numbers)
+});

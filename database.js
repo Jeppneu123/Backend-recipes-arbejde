@@ -12,7 +12,6 @@ const mysqlConnection = mysql.createConnection({
         rejectUnauthorized: this.host === "localhost"
     }
 });
-
 mysqlConnection.connect((err) => {
     if (!err) {
         console.log("Connected");
@@ -21,6 +20,5 @@ mysqlConnection.connect((err) => {
         console.log("Connection Failed");
     }
 });
-
 module.exports = mysqlConnection;
 
